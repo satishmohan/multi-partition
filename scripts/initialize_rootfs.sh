@@ -17,8 +17,20 @@
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF
 
-# Mount the root filesystem partition
-mount /dev/sda2 /mnt
+# Encrypt the root filesystem partition
+cryptsetup luksFormat /dev/sda2
+
+# Open the encrypted partition
+cryptsetup open /dev/sda2 cryptroot
+
+# Bind the LUKS key to the TPM
+clevis luks bind -d /dev/sda2 tpm2 '{"pcr_ids":"7"}'
+
+# Format the encrypted partition
+mkfs.ext4 /dev/mapper/cryptroot
+
+# Mount the encrypted partition
+mount /dev/mapper/cryptroot /mnt
 
 # Copy the current active rootfs squash file to the root filesystem partition
 unsquashfs -f -d /mnt /path/to/active/rootfs.squashfs
@@ -26,4 +38,7 @@ unsquashfs -f -d /mnt /path/to/active/rootfs.squashfs
 # Unmount the partition
 umount /mnt
 
-echo "Root filesystem initialized."
+# Close the encrypted partition
+cryptsetup close cryptroot
+
+echo "Root filesystem initialized and encrypted."
