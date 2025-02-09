@@ -6,7 +6,8 @@ This project contains scripts to manage and initialize different Linux kernel ve
 
 Ensure you have the necessary packages installed:
 
-```bash
+```
+# bash
 sudo apt-get update
 sudo apt-get install cryptsetup clevis clevis-luks
 ```
@@ -100,22 +101,6 @@ The script initialize_rootfs.sh is configured to run on reboot after installatio
 # filepath: /Users/samohan/Code/multi-partition/scripts/initialize_rootfs.sh
 #!/bin/bash
 # 
-# Copyright (c) 2025, Satish Mohan
-# All rights reserved.
-# 
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met:
-# 
-# 1. Redistributions of source code must retain the above copyright notice,
-#    this list of conditions and the following disclaimer.
-# 
-# 2. Redistributions in binary form must reproduce the above copyright notice,
-#    this list of conditions and the following disclaimer in the documentation
-#    and/or other materials provided with the distribution.
-# 
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-# IMPLIED WARRANTIES OF
 
 # Encrypt the root filesystem partition
 cryptsetup luksFormat /dev/sda2
@@ -149,26 +134,6 @@ echo "Root filesystem initialized and encrypted."
 In this option the script initialize_rootfs_lvm.sh is as follows:
 
 ```
-# filepath: /Users/samohan/Code/multi-partition/scripts/initialize_rootfs_lvm.sh
-#!/bin/bash
-# 
-# Copyright (c) 2025, Satish Mohan
-# All rights reserved.
-# 
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met:
-# 
-# 1. Redistributions of source code must retain the above copyright notice,
-#    this list of conditions and the following disclaimer.
-# 
-# 2. Redistributions in binary form must reproduce the above copyright notice,
-#    this list of conditions and the following disclaimer in the documentation
-#    and/or other materials provided with the distribution.
-# 
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-# IMPLIED WARRANTIES OF
-
 # Encrypt the root filesystem partition
 cryptsetup luksFormat /dev/sda2
 
