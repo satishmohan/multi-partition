@@ -1,0 +1,11 @@
+menuentry 'Linux Version 1' {
+    set root='(hd0,1)'
+    linux /vmlinuz-1 root=/dev/sda2 ro
+    initrd /initrd.img-1
+}
+
+menuentry 'Linux Version 2' {
+    set root='(hd0,1)'
+    linux /vmlinuz-2 root=/dev/sda2 ro
+    initrd /initrd.img-2
+}
